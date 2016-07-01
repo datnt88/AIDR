@@ -1,0 +1,51 @@
+	if nb_classes == 2: # binary
+		print ('Training and validating ....')
+		model.fit(X_train_f, y_train, batch_size=options.minibatch_size, nb_epoch=options.epochs,
+				validation_data=(X_dev, y_dev), show_accuracy=True, verbose=1, callbacks=[earlystopper, checkpointer])
+
+		print("Test model ...")
+		print ("Loading ...", model_name)
+		model.load_weights(model_name)
+
+		y_prob = model.predict_proba(X_test)
+		roc = metrics.roc_auc_score(y_test, y_prob)
+		print("ROC Prediction (binary classification):", roc)
+
+
+	elif nb_classes > 2: # multi-class
+		print ('Training and validating ....')
+		model.fit(X_train_f, y_train_mod, batch_size=options.minibatch_size, nb_epoch=options.epochs,
+				validation_data=(X_test_f, y_test_mod), verbose=1, callbacks=[earlystopper, checkpointer])
+
+		print("Test model ...")
+		print ("Loading ...", model_name)
+		model.load_weights(model_name)
+
+	y_pred = model.predict_classes(X_test_f)
+	y_test = np.array(y_test)
+
+	
+	acc2 = metrics.accuracy_score(y_test, y_pred)
+	print("Raw Accuracy:", acc2)
+
+	#get label ids in sorted
+	class_labels = sorted(label_id, key=label_id.get)
+
+#	class_labels = map(str, sorted(label_id, key=label_id.get))
+	class_ids    = sorted(label_id.values())
+
+	print (metrics.classification_report(y_test, y_pred, labels=class_ids, target_names=class_labels) )
+
+	print ("Confusion Matrix:\n", metrics.confusion_matrix(y_test, y_pred) )
+
+	mic_p, mic_r, mic_f, sup = metrics.precision_recall_fscore_support(y_test, y_pred, average='micro')
+	mac_p, mac_r, mac_f, sup = metrics.precision_recall_fscore_support(y_test, y_pred, average='macro')
+
+	print (" micro pre: " + str (mic_p) + " rec: " + str (mic_r) + " f-score: " + str (mic_f))
+	print (" macro pre: " + str (mac_p) + " rec: " + str (mac_r) + " f-score: " + str (mac_f))
+
+	# save the architecture finally in json format
+	json_string = model.to_json()
+	open(model_name + ".json", 'w').write(json_string)
+
+
