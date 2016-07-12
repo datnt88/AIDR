@@ -2,10 +2,10 @@
 #DATA_PATH="../../data/input_to_DNNs"
 #declare -a DATA_DIR=("$DATA_PATH/MRDA/" "$DATA_PATH/SWBD/")
 
-CNN_SCR="/Users/ndat/Desktop/aidr-final/CNN_MLP_Shafiq_May2/dnn_scripts/cnn_aidr.py"
+CNN_SCR="./dnn_scripts/cnn_aidr.py"
 MODEL_DIR="saved_models/"
 
-data=$1
+data=./dataset/event
 #log=./mix-in-domain-embGG.log
 log=./event-embCR.log
 
