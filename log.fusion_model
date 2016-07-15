@@ -1,0 +1,49 @@
+INFORMATION: dropout_ratio=0.5 minibatch-size=128 filter-nb=150 filt_len=2 pool_len=3 vocab=85
+----------------------------------------------------------------------
+Loading data...
+Nb of tweets: train: 7924 test: 2261 dev: 1129
+Total vocabulary size: 13537
+('loading vocabfrom ', 'vocab.in')
+Loading pre-trained word2vec embeddings......
+ Number of words found in emb matrix: 8175 of 12183
+Nb of tweets: train: 7924 test: 2261 dev: 1129
+Total vocabulary size: 13537
+('loading vocabfrom ', 'vocab.out')
+Loading pre-trained word2vec embeddings......
+ Number of words found in emb matrix: 19919 of 36061
+............................
+7924 train tweets
+2261 test  tweets
+1129 dev   tweets
+12183 in-dom vocabulary size
+36061 in-dom vocabulary size
+6 different classes
+............................
+loading models ....
+----------------------------------------------------------------------
+INFORMATION: dropout_ratio=0.5 minibatch-size=128 filter-nb=150 filt_len=2 pool_len=3 vocab=85
+----------------------------------------------------------------------
+Loading data...
+Nb of tweets: train: 7924 test: 2261 dev: 1129
+Total vocabulary size: 13537
+('loading vocabfrom ', 'vocab.in')
+Loading pre-trained word2vec embeddings......
+ Number of words found in emb matrix: 8175 of 12183
+Nb of tweets: train: 7924 test: 2261 dev: 1129
+Total vocabulary size: 13537
+('loading vocabfrom ', 'vocab.out')
+Loading pre-trained word2vec embeddings......
+ Number of words found in emb matrix: 19919 of 36061
+............................
+7924 train tweets
+2261 test  tweets
+1129 dev   tweets
+12183 in-dom vocabulary size
+36061 in-dom vocabulary size
+6 different classes
+............................
+loading models ....
+Building model: fused convolutional neural network (cnn)
+Doing classification with class # 6
+Training and validating ....
+----------------------------------------------------------------------
